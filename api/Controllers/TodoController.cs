@@ -35,16 +35,30 @@ namespace todo.Controllers
         }
 
         [HttpGet]
-        public async Task<DataDTO<Todo>> Get()
+        public async Task<DataDTO<Todo>> Get([FromQuery] bool includeDone = false)
         {
-            return new DataDTO<Todo>(await _todoService.FindTodos());
+            return new DataDTO<Todo>(await _todoService.FindTodos(includeDone));
         }
 
         [HttpPost]
-        public async Task<DataDTO<Todo>> Create({ string title}
-        dto)
+        public async Task<DataDTO<Todo>> Create(CreateTodoDTO dto)
         {
-            return new DataDTO<Todo>(await _todoService.FindTodos());
+            //TODO: Wire this up
+            throw new NotImplementedException();
         }
-}
+
+        [HttpPut]
+        public async Task<DataDTO<Todo>> Update(UpdateTodoDTO dto)
+        {
+            //TODO: wire this up.
+            throw new NotImplementedException();
+        }
+
+        [HttpDelete]
+        public async Task<DataDTO<Todo>> Delete([FromQuery] int id)
+        {
+            //TODO: wire this up.
+            throw new NotImplementedException();
+        }
+    }
 }
