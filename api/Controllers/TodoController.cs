@@ -16,7 +16,7 @@ public class DataDTO<T>
 }
 
 
-namespace question.Controllers
+namespace todo.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -39,5 +39,12 @@ namespace question.Controllers
         {
             return new DataDTO<Todo>(await _todoService.FindTodos());
         }
-    }
+
+        [HttpPost]
+        public async Task<DataDTO<Todo>> Create({ string title}
+        dto)
+        {
+            return new DataDTO<Todo>(await _todoService.FindTodos());
+        }
+}
 }
