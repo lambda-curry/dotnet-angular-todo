@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  url: "https://todo.lambdacurry.dev",
+  production: true,
 };

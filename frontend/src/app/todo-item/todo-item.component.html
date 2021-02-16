@@ -1,0 +1,7 @@
+<mat-card>
+    <div class="content">{{todo.title}}</div>
+    <div class="actions">
+        <mat-icon (ngClick)="delete()">trash</mat-icon>
+        <mat-checkbox ([checked])="todo.done" (change)="update($event.checked)">done</mat-checkbox>
+    </div>
+</mat-card>
