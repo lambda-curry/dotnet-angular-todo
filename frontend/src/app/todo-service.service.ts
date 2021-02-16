@@ -19,7 +19,7 @@ export class TodoServiceService {
 
   fetchTodos(): Observable<Todo[]> {
     return this.http.get(`${environment.url}/api/Todo`).pipe(
-      tap((r) => console.log("response", r)),
+      tap((r: any) => console.log("response", r.data)),
       map((r: any) => r.data)
     );
   }

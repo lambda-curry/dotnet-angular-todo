@@ -1,14 +1,42 @@
-.content {
-  width: calc(100% - 40px);
+.item {
+  min-height: 80px;
+  padding: 4px;
   display: flex;
-  text-align: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
   flex-grow: 1;
 }
 
-.actions {
+.title > .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+.title > .mat-form-field-appearance-outline {
+  padding: 8px 0;
+}
+
+.title {
+  font-size: 18px;
+  flex-grow: 1;
+}
+
+.item > .actions {
   width: 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 4px 0;
+}
+
+mat-checkbox {
+  margin: 0 8px;
+  margin-bottom: -0.5rem !important;
 }

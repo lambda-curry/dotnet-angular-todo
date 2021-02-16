@@ -5,3 +5,7 @@
   flex-direction: row;
   padding: 16px 8px;
 }
+
+todo {
+  width: 100%;
+}
