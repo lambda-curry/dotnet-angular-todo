@@ -22,7 +22,7 @@ export class TodoItemComponent implements OnInit {
     this._title = this.todo.title;
   }
 
-  public update(done: boolean) {
+  public update(updates: { title?: string; done?: boolean }) {
     this.editing = false;
     this._title = "";
     this.implementWarningSnackbar();
