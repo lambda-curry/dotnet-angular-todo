@@ -15,3 +15,6 @@ CREATE TABLE `todos` (
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 INSERT INTO `todos` (`title`, `createdDate`, `done`) VALUES ('First Todo', NOW(), false);
+INSERT INTO `todos` (`title`, `createdDate`, `done`) VALUES ('Second Todo', NOW(), false);
+INSERT INTO `todos` (`title`, `createdDate`, `done`) VALUES ('Third Todo', NOW(), false);
+INSERT INTO `todos` (`title`, `createdDate`, `done`) VALUES ('Fourth Todo', NOW(), false);

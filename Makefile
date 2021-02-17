@@ -1,3 +1,5 @@
+all: start
+
 api/build:
 	cd api && dotnet restore
 
