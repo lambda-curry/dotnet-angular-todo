@@ -14,7 +14,10 @@ This project requires you to have the following installed on your machine.
 
 ### Notes for Windows
 
-Docker for windows requires virtualization to be enabled. You can see the docs here for how to set that up. https://docs.docker.com/docker-for-windows/troubleshoot/#virtualization
+If you have issues getting Docker for windows running, checkout these docs:
+
+- https://docs.docker.com/docker-for-windows/troubleshoot/
+- https://docs.docker.com/docker-for-windows/troubleshoot/#virtualization
 
 ### Starting the project
 
