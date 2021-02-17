@@ -41,21 +41,21 @@ namespace todo.Controllers
         }
 
         [HttpPost]
-        public async Task<DataDTO<Todo>> Create(CreateTodoDTO dto)
+        public async Task<Todo> Create(CreateTodoDTO dto)
         {
             //TODO: Wire this up
             throw new NotImplementedException();
         }
 
         [HttpPut]
-        public async Task<DataDTO<Todo>> Update(UpdateTodoDTO dto)
+        public async Task<Todo> Update(UpdateTodoDTO dto)
         {
             //TODO: wire this up.
             throw new NotImplementedException();
         }
 
         [HttpDelete]
-        public async Task<DataDTO<Todo>> Delete([FromQuery] int id)
+        public async Task<bool> Delete([FromQuery] int id)
         {
             //TODO: wire this up.
             throw new NotImplementedException();
