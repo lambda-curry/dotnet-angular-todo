@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { Todo } from "../todo-service.service";
 
 @Component({
@@ -8,7 +9,7 @@ import { Todo } from "../todo-service.service";
   styleUrls: ["./todo-item.component.css"],
 })
 export class TodoItemComponent implements OnInit {
-  constructor(public dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private snackbar: MatSnackBar) {}
 
   @Input() public todo: Todo;
   public editing = false;
@@ -24,10 +25,13 @@ export class TodoItemComponent implements OnInit {
   public update(done: boolean) {
     this.editing = false;
     this._title = "";
+    this.implementWarningSnackbar();
+
     //TODO: no pun intended. Wire this up to API using TodoService.
   }
 
   public delete() {
+    this.implementWarningSnackbar();
     //TODO: no pun intended. Wire this up to API using TodoService.
   }
 
@@ -38,4 +42,10 @@ export class TodoItemComponent implements OnInit {
   }
 
   public create(title: string) {}
+
+  private implementWarningSnackbar() {
+    this.snackbar.open("You need to implement this!", "", {
+      panelClass: ["mat-toolbar", "mat-warn"],
+    });
+  }
 }

@@ -15,6 +15,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatDialogModule } from "@angular/material/dialog";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     MatButtonModule,
     MatInputModule,
     MatDialogModule,
+    MatSnackBarModule,
     FormsModule,
     RouterModule.forRoot(
       [{ path: "", component: TodoListComponent, pathMatch: "full" }],
