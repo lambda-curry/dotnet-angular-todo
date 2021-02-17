@@ -4,11 +4,19 @@ This project is meant to be an interview where
 
 ## Setting up your development environment
 
+### Dependencies
+
 This project requires you to have the following installed on your machine.
 
 - Docker
 - Yarn
 - dotnet core cli
+
+### Notes for Windows
+
+Docker for windows requires virtualization to be enabled. You can see the docs here for how to set that up. https://docs.docker.com/docker-for-windows/troubleshoot/#virtualization
+
+### Starting the project
 
 If you are using OSX or a linux based operating system, you can use the Makefile to run `make` in the terminal. This will spin up a mariadb docker container, start the .NET api and start the angular frontend.
 
@@ -34,7 +42,7 @@ We recommend using Visual Studio Code to do your active development, but you can
 - TSLint https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin
 - NuGet Package Manager https://marketplace.visualstudio.com/items?itemName=jmrog.vscode-nuget-package-manager
 
-## Coding Question Requirements
+## Interview Project Requirements
 
 This project includes the scaffolding for a todo app written using Angular 11 and dotnet core 3.0. Our ask is that you finish building the todo app.
 
