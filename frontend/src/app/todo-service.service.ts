@@ -31,10 +31,6 @@ export class TodoService {
       .subscribe();
   }
 
-  public updateFilters(filters: { search: string; includeDone: boolean }) {
-    this._filters.next(filters);
-  }
-
   refreshTodos$(): Observable<Todo[]> {
     return this._filters.pipe(
       take(1),
