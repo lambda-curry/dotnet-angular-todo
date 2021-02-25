@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Create a new Todo</h2>
+<mat-dialog-content>
+    <mat-form-field class="title" color="primary" floatLabel="">
+        <input type="text" placeholder="" aria-label="Number" matInput [ngModelOptions]="{standalone: true}"
+            [(ngModel)]="title" />
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-flat-button (click)="create()" color="primary" class="create-button" [disabled]="!title">Create</button>
+</mat-dialog-actions>

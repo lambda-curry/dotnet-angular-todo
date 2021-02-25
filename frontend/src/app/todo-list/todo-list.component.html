@@ -1,3 +1,17 @@
+<div class="list-filter">
+    <mat-form-field color="primary" floatLabel="">
+        <input type="text" placeholder="Search" matInput [(ngModel)]="search" (keyup)="updateFilters()" name="search" />
+    </mat-form-field>
+    <mat-checkbox name="includeDone" (change)="updateFilters()" [(ngModel)]="includeDone">Show Done</mat-checkbox>
+</div>
+
+
 <div class="list-wrapper">
-    <todo *ngFor="let todo of todos" [todo]="todo"></todo>
+    <todo *ngFor="let todo of todoService.todos$ | async" [todo]="todo"></todo>
+</div>
+
+<div class="create-container">
+    <button (click)="openTodoModal()" mat-fab color="primary" aria-label="Create New Todo">
+        <mat-icon>add</mat-icon>
+    </button>
 </div>

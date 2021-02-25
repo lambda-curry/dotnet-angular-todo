@@ -1,0 +1,16 @@
+.create-container {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+}
+
+.list-filter {
+  display: flex;
+  align-items: center;
+}
+.list-filter > mat-form-field {
+  flex: 1;
+}
+.list-filter > mat-checkbox {
+  margin-left: 8px;
+}

@@ -1,4 +1,7 @@
 
+using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace todo
 {
     public class UpdateTodoDTO
@@ -10,6 +13,11 @@ namespace todo
 
     public class CreateTodoDTO
     {
+
+        [Required]
         public string title { get; set; }
+        public DateTime createdDate { get; set; } = DateTime.Now;
+
+        public bool done { get; set; } = false;
     }
 }

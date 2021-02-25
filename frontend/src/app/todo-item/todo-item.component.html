@@ -1,5 +1,5 @@
 <mat-card class="item">
-    <mat-checkbox ([checked])="todo.done" (change)="update({done: $event.checked})"></mat-checkbox>
+    <mat-checkbox [(ngModel)]="todo.done" (change)="update({done: $event.checked})"></mat-checkbox>
     <div class="content" *ngIf="!editing">
         <span class="title">{{todo.title}}</span> <button (click)="toggleEdit()" mat-icon-button
             aria-label="Pencil icon to edit todo">

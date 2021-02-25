@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
-import { Todo } from "../todo-service.service";
+import { switchMap } from "rxjs/operators";
+import { Todo, TodoService } from "../todo-service.service";
 
 @Component({
   selector: "todo",
@@ -9,7 +10,10 @@ import { Todo } from "../todo-service.service";
   styleUrls: ["./todo-item.component.css"],
 })
 export class TodoItemComponent implements OnInit {
-  constructor(private dialog: MatDialog, private snackbar: MatSnackBar) {}
+  constructor(
+    private snackbar: MatSnackBar,
+    private todoService: TodoService
+  ) {}
 
   @Input() public todo: Todo;
   public editing = false;
@@ -25,27 +29,16 @@ export class TodoItemComponent implements OnInit {
   public update(updates: { title?: string; done?: boolean }) {
     this.editing = false;
     this._title = "";
-    this.implementWarningSnackbar();
-
-    //TODO: no pun intended. Wire this up to API using TodoService.
+    this.todoService
+      .updateTodo$({ ...this.todo, ...updates })
+      .pipe(switchMap((t) => this.todoService.refreshTodos$()))
+      .subscribe();
   }
 
   public delete() {
-    this.implementWarningSnackbar();
-    //TODO: no pun intended. Wire this up to API using TodoService.
-  }
-
-  public openCreate() {
-    // TODO: Consider using a dialog to create a modal to collect the name of todo.
-    // this.dialog.open(CreateTodoComponent, {
-    // });
-  }
-
-  public create(title: string) {}
-
-  private implementWarningSnackbar() {
-    this.snackbar.open("You need to implement this!", "", {
-      panelClass: ["mat-toolbar", "mat-warn"],
-    });
+    this.todoService
+      .deleteTodo$(this.todo.id)
+      .pipe(switchMap((t) => this.todoService.refreshTodos$()))
+      .subscribe();
   }
 }

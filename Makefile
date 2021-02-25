@@ -13,7 +13,7 @@ frontend: frontend/node_modules
 	cd frontend && yarn start
 
 api: api/build
-	cd api && dotnet run
+	cd api && dotnet watch run
 
 .PHONY: docker-compose
 docker-compose:

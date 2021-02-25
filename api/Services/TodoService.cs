@@ -22,31 +22,52 @@ namespace todo
             this._logger = logger;
         }
 
-        public async Task<List<Todo>> FindTodos(bool includeDone)
+        public async Task<List<Todo>> FindTodos(string search, bool includeDone)
         {
             using (System.Data.IDbConnection db = new MySqlConnection(this.CONNECTION_STRING))
             {
-                var filter = includeDone ? "" : " WHERE done = false ";
-                var query = $"SELECT * FROM todo.todos {filter} ORDER BY id DESC";
+                var doneFilter = includeDone ? "" : " AND done = false ";
+                var filter = $@"WHERE title like '%{search}%' {doneFilter}";
+                var query = $"SELECT * FROM todo.todos {filter} ORDER BY createdDate DESC";
                 return (await db.QueryAsync<Todo>(query)).ToList();
             }
         }
 
-        public async Task<Todo> CreateTodo(CreateTodoDTO title)
+        public async Task<Todo> FetchTodo(int id)
         {
-            throw new NotImplementedException();
+            using (System.Data.IDbConnection db = new MySqlConnection(this.CONNECTION_STRING))
+            {
+                var query = $"SELECT * FROM todo.todos WHERE id = {id}";
+                return (await db.QueryFirstAsync<Todo>(query));
+            }
         }
 
-        public async Task<Todo> UpdateTodo(UpdateTodoDTO update)
+        public async Task<int> CreateTodo(CreateTodoDTO dto)
         {
-            //TODO: no pun intended. Make this update a TODO
-            throw new NotImplementedException();
+            using (System.Data.IDbConnection db = new MySqlConnection(this.CONNECTION_STRING))
+            {
+                var query = $"INSERT INTO todo.todos (title, createdDate, done) values (@title, @createdDate, @done) RETURNING id";
+                return (int)(await db.QuerySingleAsync(query, dto)).id;
+            }
         }
 
-        public async Task<Todo> DeleteTodo(int id)
+        public async Task<int> UpdateTodo(UpdateTodoDTO update)
         {
-            //TODO: no pun intended. Make this delete a todo.
-            throw new NotImplementedException();
+
+            using (System.Data.IDbConnection db = new MySqlConnection(this.CONNECTION_STRING))
+            {
+                var query = $"UPDATE todo.todos set title = @title, done = @done where id = @id";
+                return (await db.ExecuteAsync(query, update));
+            }
+        }
+
+        public async Task<int> DeleteTodo(int id)
+        {
+            using (System.Data.IDbConnection db = new MySqlConnection(this.CONNECTION_STRING))
+            {
+                var query = $"DELETE FROM todo.todos where id = {id}";
+                return (await db.ExecuteAsync(query));
+            }
         }
     }
 }
